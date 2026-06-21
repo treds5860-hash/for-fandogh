@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Fandogh ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#070b1a,#111827,#1f1147);
+    overflow:hidden;
+    color:white;
+}
+
+.page{
+    position:absolute;
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    pointer-events:none;
+    transition:1s;
+    padding:20px;
+}
+
+.page.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+h1{
+    text-align:center;
+    font-size:clamp(2rem,6vw,5rem);
+    text-shadow:0 0 25px #ff4d8d;
+}
+
+p{
+    text-align:center;
+    font-size:clamp(1.2rem,3vw,2rem);
+    max-width:900px;
+}
+
+button{
+    border:none;
+    padding:15px 35px;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:1.2rem;
+    margin-top:25px;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+.next{
+    background:#ff4d8d;
+    color:white;
+}
+
+.yes{
+    background:#22c55e;
+    color:white;
+}
+
+.no{
+    background:#ef4444;
+    color:white;
+    position:absolute;
+}
+
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:-2;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+    50%{opacity:.2;}
+}
+
+.typing{
+    overflow:hidden;
+    white-space:nowrap;
+    border-right:3px solid white;
+    width:0;
+    animation:typing 4s steps(40,end) forwards;
+}
+
+@keyframes typing{
+    to{
+        width:100%;
+    }
+}
+
+.heart-wrap{
+    position:relative;
+    width:320px;
+    height:320px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.heart{
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:linear-gradient(135deg,#ff1744,#ff6b9a);
+    transform:rotate(-45deg);
+    animation:heartbeat 1.3s infinite;
+    box-shadow:
+    0 0 30px rgba(255,23,68,.9),
+    0 0 70px rgba(255,23,68,.6),
+    0 0 120px rgba(255,23,68,.4);
+}
+
+.heart:before,
+.heart:after{
+    content:'';
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#ff1744,#ff6b9a);
+}
+
+.heart:before{
+    top:-90px;
+    left:0;
+}
+
+.heart:after{
+    left:90px;
+    top:0;
+}
+
+.name{
+    position:absolute;
+    z-index:5;
+    font-size:2rem;
+    font-weight:700;
+    letter-spacing:3px;
+    text-shadow:0 0 20px white;
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:rotate(-45deg) scale(1);
+    }
+    50%{
+        transform:rotate(-45deg) scale(1.15);
+    }
+}
+
+.question{
+    text-align:center;
+    font-size:clamp(2rem,5vw,4rem);
+    margin-bottom:30px;
+}
+
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+
+.float-heart{
+    position:absolute;
+    font-size:25px;
+    animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    to{
+        transform:translateY(-150px);
+        opacity:0;
+    }
+}
+
+.final{
+    text-align:center;
+    font-size:clamp(2rem,6vw,5rem);
+    text-shadow:0 0 30px #ff4d8d;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.05);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="hearts"></div>
+
+<!-- PAGE 1 -->
+<section class="page active">
+    <h1>I Have Something To Tell You...</h1>
+    <button class="next" onclick="nextPage()">Continue ❤️</button>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page">
+    <p class="typing">
+        From the moment I met you, every day became a little more beautiful...
+    </p>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page">
+    <h1>I LOVE YOU ❤️</h1>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page">
+    <div class="heart-wrap">
+        <div class="heart"></div>
+        <div class="name">FANDOGH ❤️</div>
+    </div>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page">
+    <div class="question">
+        Will You Be My Partner? 💍
+    </div>
+
+    <button class="yes" onclick="showFinal()">YES ❤️</button>
+    <button class="no" id="noBtn">NO 😅</button>
+</section>
+
+<!-- PAGE 6 -->
+<section class="page">
+    <div class="final">
+        ❤️ YAAAAY ❤️
+        <br><br>
+        You Made Me The Happiest Person Alive
+    </div>
+</section>
+
+<script>
+
+const pages=document.querySelectorAll('.page');
+let current=0;
+
+function nextPage(){
+    pages[current].classList.remove('active');
+    current++;
+    pages[current].classList.add('active');
+
+    if(current===1){
+        setTimeout(nextPage,5000);
+    }
+    else if(current===2){
+        setTimeout(nextPage,3000);
+    }
+    else if(current===3){
+        setTimeout(nextPage,4000);
+    }
+}
+
+function showFinal(){
+    pages[current].classList.remove('active');
+    current=5;
+    pages[current].classList.add('active');
+
+    for(let i=0;i<200;i++){
+        setTimeout(createHeart,i*50);
+    }
+}
+
+const noBtn=document.getElementById('noBtn');
+
+noBtn.addEventListener('mouseover',()=>{
+    noBtn.style.left=Math.random()*80+'vw';
+    noBtn.style.top=Math.random()*80+'vh';
+});
+
+function createHeart(){
+    const h=document.createElement('div');
+    h.className='float-heart';
+    h.innerHTML='❤️';
+    h.style.left=Math.random()*100+'vw';
+    h.style.animationDuration=(4+Math.random()*4)+'s';
+
+    document.querySelector('.hearts').appendChild(h);
+
+    setTimeout(()=>{
+        h.remove();
+    },8000);
+}
+
+for(let i=0;i<250;i++){
+    const star=document.createElement('div');
+    star.className='star';
+    star.style.left=Math.random()*100+'vw';
+    star.style.top=Math.random()*100+'vh';
+    star.style.animationDelay=Math.random()*3+'s';
+    document.querySelector('.stars').appendChild(star);
+}
+
+setInterval(()=>{
+    if(current>0){
+        createHeart();
+    }
+},700);
+
+</script>
+
+</body>
+</html>
